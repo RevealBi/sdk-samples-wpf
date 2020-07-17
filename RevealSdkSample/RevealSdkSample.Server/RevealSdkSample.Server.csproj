@@ -5,7 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="nuget\**" />
+    <Content Remove="nuget\**" />
+    <EmbeddedResource Remove="nuget\**" />
+    <None Remove="nuget\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="nuget.config" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +41,10 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="DataSources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="nuget.config" />
   </ItemGroup>
 
   <ItemGroup>

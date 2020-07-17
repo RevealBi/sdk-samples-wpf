@@ -62,9 +62,9 @@ namespace RevealSdkSample.Server
             app.UseAuthorization();
 
             app.UseCors(builder => builder
-     .AllowAnyOrigin()
-     .AllowAnyMethod()
-     .AllowAnyHeader());
+             .AllowAnyOrigin()
+             .AllowAnyMethod()
+             .AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
