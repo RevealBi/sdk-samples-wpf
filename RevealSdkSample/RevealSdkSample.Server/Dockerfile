@@ -1,5 +1,3 @@
-ARG portvalue=55001
-
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
 
@@ -39,8 +37,8 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 
-EXPOSE $portvalue
-#ENV ASPNETCORE_URLS=http://*:55001
+EXPOSE 80
+ENV ASPNETCORE_URLS=http://*:8080
 
 ENV ASPNETCORE_ENVIRONMENT=NetCore
 ENTRYPOINT ["dotnet", "RevealSdkSample.Server.dll"] 
