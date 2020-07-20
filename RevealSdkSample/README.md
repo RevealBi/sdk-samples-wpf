@@ -12,7 +12,7 @@ dotnet build
 dotnet run
 ```
 
-If everything went smooth you should seem something like:
+If everything went smooth you should see something like:
 
 ```
 info: Microsoft.Hosting.Lifetime[0]
@@ -25,7 +25,7 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\Work\EM\Samples-Sdk\RevealSdkSample\RevealSdkSample.Server
 ```
 
-## building and running docker image for the server
+## Building and running docker image for the server
 
 ```
 cd RevealSdkSample\RevealSdkSample.Server
