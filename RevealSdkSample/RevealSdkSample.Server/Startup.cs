@@ -38,7 +38,7 @@ namespace RevealSdkSample.Server
             var embedSettings = new RevealEmbedSettings();
             embedSettings.LocalFileStoragePath = GetLocalFileStoragePath(_webRootPath);
 
-            var cacheFilePath = Configuration.GetSection("Caching")?["CacheFilePath"] ?? @"C:\Temp\ReportPlus\Cache";
+            var cacheFilePath = Configuration.GetSection("Caching")?["CacheFilePath"] ?? @"Cache";
             Directory.CreateDirectory(cacheFilePath);
             embedSettings.DataCachePath = cacheFilePath;
             embedSettings.CachePath = cacheFilePath;
@@ -55,7 +55,7 @@ namespace RevealSdkSample.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
