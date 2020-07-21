@@ -3,4 +3,5 @@
 **/bin
 **/obj
 **/pkg
+Cache/
 node_modules/
