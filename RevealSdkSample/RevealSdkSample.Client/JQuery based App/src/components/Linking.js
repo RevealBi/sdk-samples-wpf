@@ -1,43 +1,32 @@
-import React, { Component } from "react";
+import React, { useRef, useEffect } from "react";
+const $ = window.$;
 
-export class Linking extends Component {
-  static displayName = Linking.name;
+export const Linking = (props) => {
+  const element = useRef(null);
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.onVisualizationLinkingDashboard = this.onVisualizationLinkingDashboard.bind(
-      this
-    );
-  }
-
-  componentDidMount() {
-    console.log(this.nv);
-
-    this.rv.addEventListener(
-      "onVisualizationLinkingDashboard",
-      this.onVisualizationLinkingDashboard
-    );
-  }
-
-  componentWillUnmount() {
-    this.rv.removeEventListener(
-      "onVisualizationLinkingDashboard",
-      this.onVisualizationLinkingDashboard
-    );
-  }
-
-  onVisualizationLinkingDashboard(event) {
+  function handleLinkingDashboard(event) {
     event.detail.callback("Campaigns");
   }
 
-  render() {
-    return (
-      <reveal-view
-        ref={(elem) => (this.rv = elem)}
-        dashboard-name="Marketing"
-        onVisualizationDataPointClicked={this.onVisualizationLinkingDashboard}
-      ></reveal-view>
-    );
-  }
+  const initBoard = () => {
+    const dashboardId = "Marketing";
+    const settings = new $.ig.RevealSettings(dashboardId);
+    $.ig.RevealUtility.loadDashboard(dashboardId, (dashboard) => {
+      settings.dashboard = dashboard;
+      new $.ig.RevealView("#marketing", settings);
+    }, (error) => console.log(error));
+  };
+
+  useEffect(() => {
+    initBoard();
+    const el = element.current;
+    el.addEventListener('onVisualizationLinkingDashboard', handleLinkingDashboard);
+    return () => {
+      el.removeEventListener('onVisualizationLinkingDashboard', handleLinkingDashboard);
+    };
+  }, []);
+
+  return (
+    <div id="marketing" ref={element} />
+  );
 }

@@ -56,19 +56,18 @@ const CountryForm = (props) => {
 };
 
 export const Filters = (props) => {
+  const [view, setView] = useState(null);
   const [_, setOption] = useState('All');
   const revealEl = useRef(null);
 
   function handleOptionChange(value) {
     setOption(value);
+    const filter = value === 'All' ? [] : [value];
+    view.setFilterSelectedValues(view.dashboard.filters()[0], filter);
   }
 
   function handleClick(event) {
     console.log(event);
-  }
-
-  function handleAmericas() {
-    // TODO: port filters logic
   }
 
   // Setup reveal dashboard
@@ -79,7 +78,7 @@ export const Filters = (props) => {
 
     $.ig.RevealUtility.loadDashboard(dashboardId, (dashboard) => {
       settings.dashboard = dashboard;
-      new $.ig.RevealView("#sales", settings);
+      setView(new $.ig.RevealView("#sales", settings));
     }, (error) => console.log(error));
   };
 
@@ -91,7 +90,7 @@ export const Filters = (props) => {
     return () => {
       el.removeEventListener('onVisualizationDataPointClicked', handleClick);
     };
-  });
+  }, []);
 
   return (
     <div>
@@ -100,27 +99,3 @@ export const Filters = (props) => {
     </div>
   );
 };
-
-
-
-//   handleAmericas = (event) => {
-//     //this.rv.dashboard.filters[0];
-//     this.rv.setFilterSelectedValues(this.rv.dashboard.filters()[0], [
-//       "Americas",
-//     ]);
-//     console.log(this.rv.dashboard.filters()[0]);
-//   };
-
-//   handleOptionChange = (event) => {
-//     this.setState({
-//       selectedOption: event.target.value,
-//     });
-
-//     let selectedFilterValues =
-//       event.target.value === "All" ? [] : [event.target.value];
-
-//     this.rv.setFilterSelectedValues(
-//       this.rv.dashboard.filters()[0],
-//       selectedFilterValues
-//     );
-//   };
