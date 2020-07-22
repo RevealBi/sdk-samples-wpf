@@ -1,32 +1,31 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 const $ = window.$;
 
 export const Linking = (props) => {
-  const element = useRef(null);
-
-  function handleLinkingDashboard(event) {
-    event.detail.callback("Campaigns");
+  function handleLinkingDashboard(title, url, callback) {
+    console.log("Link followed - " + title);
+    console.log("Url - " + url);
+    var dashboardId = "Campaigns";
+    callback(dashboardId);
   }
 
   const initBoard = () => {
     const dashboardId = "Marketing";
     const settings = new $.ig.RevealSettings(dashboardId);
-    $.ig.RevealUtility.loadDashboard(dashboardId, (dashboard) => {
-      settings.dashboard = dashboard;
-      new $.ig.RevealView("#marketing", settings);
-    }, (error) => console.log(error));
+    $.ig.RevealUtility.loadDashboard(
+      dashboardId,
+      (dashboard) => {
+        settings.dashboard = dashboard;
+        var view = new $.ig.RevealView("#marketing", settings);
+        view.onVisualizationLinkingDashboard = handleLinkingDashboard;
+      },
+      (error) => console.log(error)
+    );
   };
 
   useEffect(() => {
     initBoard();
-    const el = element.current;
-    el.addEventListener('onVisualizationLinkingDashboard', handleLinkingDashboard);
-    return () => {
-      el.removeEventListener('onVisualizationLinkingDashboard', handleLinkingDashboard);
-    };
   }, []);
 
-  return (
-    <div id="marketing" ref={element} />
-  );
-}
+  return <div id="marketing" />;
+};

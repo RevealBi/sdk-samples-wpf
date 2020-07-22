@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 const $ = window.$;
 
-
-const CountryChoice = (props) => {
+const RegionChoice = (props) => {
   return (
     <>
       <label className="radioLabels">
@@ -19,9 +18,7 @@ const CountryChoice = (props) => {
   );
 };
 
-
-
-const CountryForm = (props) => {
+const RegionForm = (props) => {
   const [selected, setSelected] = useState("All");
 
   function handleChange(value) {
@@ -38,36 +35,34 @@ const CountryForm = (props) => {
     { id: 5, value: "Japan" },
   ];
 
-  const items = data.map(each =>
-    <CountryChoice
-      name="counties"
+  const items = data.map((each) => (
+    <RegionChoice
+      name="regions"
       value={each.value}
       handleChange={handleChange}
       key={each.id}
       checked={each.value === selected}
     />
-  );
+  ));
 
-  return (
-    <form>
-      {items}
-    </form>
-  );
+  return <form>{items}</form>;
 };
 
 export const Filters = (props) => {
   const [view, setView] = useState(null);
-  const [_, setOption] = useState('All');
-  const revealEl = useRef(null);
+  const [_, setOption] = useState("All");
+  // const revealEl = useRef(null);
 
   function handleOptionChange(value) {
     setOption(value);
-    const filter = value === 'All' ? [] : [value];
+    const filter = value === "All" ? [] : [value];
     view.setFilterSelectedValues(view.dashboard.filters()[0], filter);
   }
 
-  function handleClick(event) {
-    console.log(event);
+  function handleDataPointClick(widget, cell, row) {
+    console.log(widget);
+    console.log(cell);
+    console.log(row);
   }
 
   // Setup reveal dashboard
@@ -76,26 +71,26 @@ export const Filters = (props) => {
     const settings = new $.ig.RevealSettings(dashboardId);
     settings.showFilters = true;
 
-    $.ig.RevealUtility.loadDashboard(dashboardId, (dashboard) => {
-      settings.dashboard = dashboard;
-      setView(new $.ig.RevealView("#sales", settings));
-    }, (error) => console.log(error));
+    $.ig.RevealUtility.loadDashboard(
+      dashboardId,
+      (dashboard) => {
+        settings.dashboard = dashboard;
+        var v = new $.ig.RevealView("#sales", settings);
+        v.onVisualizationDataPointClicked = handleDataPointClick;
+        setView(v);
+      },
+      (error) => console.log(error)
+    );
   };
 
-  // Setup event listeners and create dashboard
   useEffect(() => {
     initRevealBoard();
-    const el = revealEl.current
-    el.addEventListener('onVisualizationDataPointClicked', handleClick);
-    return () => {
-      el.removeEventListener('onVisualizationDataPointClicked', handleClick);
-    };
   }, []);
 
   return (
     <div>
-      <CountryForm handleOptionChange={handleOptionChange} />
-      <div id="sales" ref={revealEl} />
+      <RegionForm handleOptionChange={handleOptionChange} />
+      <div id="sales" />
     </div>
   );
 };
