@@ -10,6 +10,26 @@ namespace RevealSdkSample.Server.RevealSdk
 {
     public class RevealSdkContext : IRevealSdkContext
     {
+        public RevealSdkContext()
+        {
+            var liveDashboardsLocation = "LiveDashboards/";
+            Directory.CreateDirectory(liveDashboardsLocation);
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var embeddedResources = assembly.GetManifestResourceNames();
+
+            foreach (var rdashPath in embeddedResources.Where(path => path.Contains(".rdash")))
+            {
+                var stream = assembly.GetManifestResourceStream(rdashPath);
+                var fileName = rdashPath.Split('.').Skip(3).First() +".rdash";
+                var fullPath = Path.Combine(liveDashboardsLocation, fileName);
+                using (var output = File.Open(fullPath, FileMode.Create ))
+                {
+                    stream.CopyTo(output);
+                }
+            }
+
+        }
         public IRVDataSourceProvider DataSourceProvider => null;
 
         public IRVDataProvider DataProvider => null;
@@ -22,23 +42,27 @@ namespace RevealSdkSample.Server.RevealSdk
             {
                 var fileName = dashboardId.Split('|')[0];
                 var dashboardFileName = fileName + ".rdash";
-                var resourceName = $"RevealSdkSample.Server.Dashboards.{dashboardFileName}";
+                var rdashLocation = "LiveDashboards/" + dashboardFileName;
 
-                var assembly = Assembly.GetExecutingAssembly();
-                var a = assembly.GetManifestResourceNames();
-                return assembly.GetManifestResourceStream(resourceName);
+                MemoryStream memStream = new MemoryStream();
+                using (var fileStream = File.OpenRead(rdashLocation))
+                {
+                    fileStream.CopyTo(memStream);
+                }
+
+                return memStream;
             });
         }
 
         public async Task SaveDashboardAsync(string userId, string dashboardId, Stream dashboardStream)
         {
-            await Task.Run(() => { });
-            //var dashboardFileName = dashboardId + ".rdash";
-            //var resourceName = $"Reveal.WebSdk.Sample.Core461.Dashboards.{dashboardFileName}";
+            var liveDashboardsLocation = "LiveDashboards/";
+            var rdashTargetPath = Path.Combine(liveDashboardsLocation, dashboardId + ".rdash");
 
-            //var assembly = Assembly.GetExecutingAssembly();
-            //var a = assembly.GetManifestResourceNames();
-            //return assembly.GetManifestResourceStream(resourceName);
+            using (var output = File.Open(rdashTargetPath, FileMode.Create))
+            {
+                dashboardStream.CopyTo(output);
+            }
         }
     }
 }

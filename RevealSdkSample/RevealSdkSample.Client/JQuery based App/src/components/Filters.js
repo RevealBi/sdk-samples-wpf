@@ -69,7 +69,6 @@ export const Filters = (props) => {
   const initRevealBoard = () => {
     const dashboardId = "Sales";
     const settings = new $.ig.RevealSettings(dashboardId);
-    settings.showFilters = true;
 
     $.ig.RevealUtility.loadDashboard(
       dashboardId,
@@ -77,6 +76,7 @@ export const Filters = (props) => {
         settings.dashboard = dashboard;
         var v = new $.ig.RevealView("#sales", settings);
         v.onVisualizationDataPointClicked = handleDataPointClick;
+
         setView(v);
       },
       (error) => console.log(error)
