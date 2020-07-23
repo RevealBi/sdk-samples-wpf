@@ -13,22 +13,29 @@ namespace RevealSdkSample.Server.RevealSdk
         public RevealSdkContext()
         {
             var liveDashboardsLocation = "LiveDashboards/";
-            Directory.CreateDirectory(liveDashboardsLocation);
-
-            var assembly = Assembly.GetExecutingAssembly();
-            var embeddedResources = assembly.GetManifestResourceNames();
-
-            foreach (var rdashPath in embeddedResources.Where(path => path.Contains(".rdash")))
+            if (Directory.Exists(liveDashboardsLocation))
             {
-                var stream = assembly.GetManifestResourceStream(rdashPath);
-                var fileName = rdashPath.Split('.').Skip(3).First() +".rdash";
-                var fullPath = Path.Combine(liveDashboardsLocation, fileName);
-                using (var output = File.Open(fullPath, FileMode.Create ))
+                Console.WriteLine("Dahboards present!");
+
+            }
+            else
+            {
+                Directory.CreateDirectory(liveDashboardsLocation);
+                Console.WriteLine("Dahboards missing. Initializing!");
+                var assembly = Assembly.GetExecutingAssembly();
+                var embeddedResources = assembly.GetManifestResourceNames();
+
+                foreach (var rdashPath in embeddedResources.Where(path => path.Contains(".rdash")))
                 {
-                    stream.CopyTo(output);
+                    var stream = assembly.GetManifestResourceStream(rdashPath);
+                    var fileName = rdashPath.Split('.').Skip(3).First() + ".rdash";
+                    var fullPath = Path.Combine(liveDashboardsLocation, fileName);
+                    using (var output = File.Open(fullPath, FileMode.Create))
+                    {
+                        stream.CopyTo(output);
+                    }
                 }
             }
-
         }
         public IRVDataSourceProvider DataSourceProvider => null;
 
