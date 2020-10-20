@@ -1,5 +1,5 @@
 ﻿using DataSource_DataTable.Providers;
-using Infragistics.Sdk;
+using Reveal.Sdk;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -14,21 +14,19 @@ namespace DataSource_DataTable
         public MainWindow()
         {
             InitializeComponent();
+            RevealSdkSettings.DataProvider = new DataTableDataProvider();
             Loaded += MainWindow_Loaded;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            _revealView.Settings = new RevealSettings(null);
-
             _revealView.DataSourcesRequested += RevealView_DataSourcesRequested;
-            _revealView.DataProvider = new DataTableDataProvider();
         }
 
         private void RevealView_DataSourcesRequested(object sender, DataSourcesRequestedEventArgs e)
         {
-            List<object> datasources = new List<object>();
-            List<object> datasourceItems = new List<object>();
+            List<RVDashboardDataSource> datasources = new List<RVDashboardDataSource>();
+            List<RVDataSourceItem> datasourceItems = new List<RVDataSourceItem>();
 
             var inMemoryDataSourceItem = new RVInMemoryDataSourceItem("employees") 
             { 
