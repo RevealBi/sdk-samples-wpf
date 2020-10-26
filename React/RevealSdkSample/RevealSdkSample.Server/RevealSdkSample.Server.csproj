@@ -34,9 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Infragistics.Reveal.Sdk.Web.AspNetCore.Trial" Version="1.0.1374" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="3.1.6" />
+    <PackageReference Include="Reveal.Sdk.Web.AspNetCore.Trial" Version="1.0.1574" />
   </ItemGroup>
 
   <ItemGroup>

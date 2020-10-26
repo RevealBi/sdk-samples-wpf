@@ -8,7 +8,7 @@ WORKDIR /src
 
 COPY RevealSdkSample.Server.csproj /src
 COPY nuget.config /src
-COPY nuget/ /src/nuget
+RUN  mkdir /src/nuget
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
 RUN apt-get install -y nodejs

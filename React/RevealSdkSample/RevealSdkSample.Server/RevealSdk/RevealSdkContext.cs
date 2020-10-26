@@ -1,4 +1,4 @@
-﻿using Infragistics.Sdk;
+﻿using Reveal.Sdk;
 using System;
 using System.Collections.Generic;
 using System.IO;
