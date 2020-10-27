@@ -107,7 +107,7 @@
       <Version>4.21.1</Version>
     </PackageReference>
     <PackageReference Include="Reveal.Sdk.Wpf.Trial">
-      <Version>1.0.1574</Version>
+      <Version>1.0.1576</Version>
     </PackageReference>
     <PackageReference Include="System.Security.Cryptography.ProtectedData">
       <Version>4.7.0</Version>
