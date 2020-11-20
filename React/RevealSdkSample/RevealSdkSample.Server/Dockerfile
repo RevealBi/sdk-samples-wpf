@@ -25,7 +25,7 @@ RUN dotnet restore "RevealSdkSample.Server.csproj"
 
 COPY . .
 WORKDIR /src/.
-RUN npm isntall
+RUN npm install
 #RUN dotnet restore "ReportPlus.Web/ReportPlus.Web.NetCore.csproj"
 RUN dotnet build "RevealSdkSample.Server.csproj" -c NetCore -f netcoreapp3.1 -o /app
 
@@ -37,7 +37,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 
-EXPOSE 80
+EXPOSE 8080
 ENV ASPNETCORE_URLS=http://*:8080
 
 ENV ASPNETCORE_ENVIRONMENT=NetCore
