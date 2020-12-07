@@ -76,7 +76,7 @@ namespace RevealSdkSample.Server
         {
             return Path.Combine(webRootPath, "App_Data", "RVLocalFiles");
         }
-        protected virtual IRevealSdkContext CreateSdkContext()
+        protected virtual RevealSdkContextBase CreateSdkContext()
         {
             return new RevealSdkContext();
         }

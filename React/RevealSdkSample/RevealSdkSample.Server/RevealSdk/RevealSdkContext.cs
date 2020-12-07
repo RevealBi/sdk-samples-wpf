@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace RevealSdkSample.Server.RevealSdk
 {
-    public class RevealSdkContext : IRevealSdkContext
+    public class RevealSdkContext : RevealSdkContextBase
     {
         public RevealSdkContext()
         {
             var liveDashboardsLocation = "LiveDashboards/";
             if (Directory.Exists(liveDashboardsLocation))
             {
-                Console.WriteLine("Dahboards present!");
+                Console.WriteLine("Dashboards present!");
 
             }
             else
@@ -37,13 +37,13 @@ namespace RevealSdkSample.Server.RevealSdk
                 }
             }
         }
-        public IRVDataSourceProvider DataSourceProvider => null;
+        public override IRVDataSourceProvider DataSourceProvider => null;
 
-        public IRVDataProvider DataProvider => null;
+        public override IRVDataProvider DataProvider => null;
 
-        public IRVAuthenticationProvider AuthenticationProvider => null;
+        public override IRVAuthenticationProvider AuthenticationProvider => null;
 
-        public async Task<Stream> GetDashboardAsync(string dashboardId)
+        public override async Task<Dashboard> GetDashboardAsync(string dashboardId)
         {
             var fileName = dashboardId.Split('|')[0];
             var dashboardFileName = fileName + ".rdash";
@@ -54,18 +54,18 @@ namespace RevealSdkSample.Server.RevealSdk
             {
                 await fileStream.CopyToAsync(memStream);
             }
-
-            return memStream;
+            memStream.Position = 0;
+            return new Dashboard(memStream);
         }
 
-        public async Task SaveDashboardAsync(string userId, string dashboardId, Stream dashboardStream)
-        {
+        public override async Task SaveDashboardAsync(string userId, string dashboardId, Dashboard dashboard)
+        { 
             var liveDashboardsLocation = "LiveDashboards/";
             var rdashTargetPath = Path.Combine(liveDashboardsLocation, dashboardId + ".rdash");
 
             using (var output = File.Open(rdashTargetPath, FileMode.Create))
             {
-                await dashboardStream.CopyToAsync(output);
+                await (await dashboard.SerializeAsync()).CopyToAsync(output);
             }
         }
     }

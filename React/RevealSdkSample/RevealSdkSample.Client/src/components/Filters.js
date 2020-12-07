@@ -55,8 +55,8 @@ export const Filters = (props) => {
 
   function handleOptionChange(value) {
     setOption(value);
-    const filter = value === "All" ? [] : [value];
-    view.setFilterSelectedValues(view.dashboard.filters()[0], filter);
+    const filterSelectedValue = value === "All" ? [] : [value];
+    view.dashboard.filters[0].selectedValues = filterSelectedValue;
   }
 
   function handleDataPointClick(widget, cell, row) {

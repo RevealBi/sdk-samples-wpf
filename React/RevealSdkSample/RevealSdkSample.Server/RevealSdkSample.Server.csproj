@@ -1,29 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="nuget\**" />
-    <Content Remove="nuget\**" />
-    <EmbeddedResource Remove="nuget\**" />
-    <None Remove="nuget\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Controllers\WeatherForecastController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="nuget.config" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Dashboards\Campaigns.rdash" />
-    <None Remove="Dashboards\Manufacturing.rdash" />
-    <None Remove="Dashboards\Marketing.rdash" />
-    <None Remove="Dashboards\Sales.rdash" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,24 +16,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.6" />
-    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="3.1.6" />
-    <PackageReference Include="Reveal.Sdk.Web.AspNetCore.Trial" Version="1.0.1576" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="DataSources\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="nuget.config" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\App_Data\RVLocalFiles\Samples.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="3.1.6" />
+    <PackageReference Include="Reveal.Sdk.Web.AspNetCore.Trial" Version="1.0.1629" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cache\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 
