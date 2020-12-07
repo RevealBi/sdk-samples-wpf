@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
 WORKDIR /app
 
 #Was not able to build in a container, because of the private nuget is not working in netcore 2
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 #COPY [".template/NuGetCacheRefreshService.csproj", ".template/nuget.config", "./"]
 
@@ -12,8 +12,6 @@ RUN  mkdir /src/nuget
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
 RUN apt-get install -y nodejs
-
-
 
 # ENV DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 # ENV http_proxy=http://172.17.0.1:3128 \
@@ -27,11 +25,11 @@ COPY . .
 WORKDIR /src/.
 RUN npm install
 #RUN dotnet restore "ReportPlus.Web/ReportPlus.Web.NetCore.csproj"
-RUN dotnet build "RevealSdkSample.Server.csproj" -c NetCore -f netcoreapp3.1 -o /app
+RUN dotnet build "RevealSdkSample.Server.csproj" -c release -f net5.0 -o /app
 
 #This combination is recomended by MS to produce the smallest image. TODO: Understand why build and publish are separate
 FROM build AS publish
-RUN dotnet publish "RevealSdkSample.Server.csproj" -c NetCore -f netcoreapp3.1 -o /app && rm -rf /app/runtimes/osx
+RUN dotnet publish "RevealSdkSample.Server.csproj" -c release -o /app --no-restore
 
 FROM base AS final
 WORKDIR /app
@@ -41,4 +39,4 @@ EXPOSE 8080
 ENV ASPNETCORE_URLS=http://*:8080
 
 ENV ASPNETCORE_ENVIRONMENT=NetCore
-ENTRYPOINT ["dotnet", "RevealSdkSample.Server.dll"] 
+ENTRYPOINT ["dotnet", "RevealSdkSample.Server.dll"]
