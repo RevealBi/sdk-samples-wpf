@@ -1,9 +1,0 @@
-{
-    "name": "screenshoteer",
-    "version": "1.0.0",
-    "description": "screenshoteer utility",
-    "main": "screenshoteer.js",
-    "dependencies": {
-        "puppeteer": "^1.20.0"
-    }
-}
