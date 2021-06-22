@@ -1,0 +1,19 @@
+﻿<Window x:Class="FilteringDashboards.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rv="http://revealbi.io/" 
+        Title="MainWindow" Height="720" Width="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="15">
+            <Button Click="AllTime_Click">All Time</Button>
+            <Button Click="Today_Click">Today</Button>
+            <Button Click="LastYear_Click">Last Year</Button>
+            <Button Click="Range_Click">Range</Button>
+        </StackPanel>
+        <rv:RevealView Grid.Column="1" x:Name="_revealView"/>
+    </Grid>
+</Window>
