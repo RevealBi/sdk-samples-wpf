@@ -1,0 +1,10 @@
+﻿<Window x:Class="SavingDashboards.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rv="http://revealbi.io/" 
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <rv:RevealView x:Name="_revealView"
+                       SaveDashboard="RevealView_SaveDashboard"/>
+    </Grid>
+</Window>
