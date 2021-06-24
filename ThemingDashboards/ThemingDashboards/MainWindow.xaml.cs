@@ -31,7 +31,7 @@ namespace ThemingDashboards
                 if (themeItem.Theme?.ToString() == theme.ToString())
                     return;
 
-                if (themeItem.Name == "Custom")
+                if (themeItem.Name == "Clone Existing Theme")
                 {
                     theme = CreateCustomUglyTheme();
                 }
@@ -49,18 +49,10 @@ namespace ThemingDashboards
         {
             var customTheme = RevealSdkSettings.Theme.Clone();
 
-            var regularFont = new FontFamily(new Uri("pack://application:,,,/Fonts/"), "./#Wingdings 2");
-            var mediumFont = new FontFamily(new Uri("pack://application:,,,/Fonts/"), "./#Lucida Calligraphy");
-            var boldFont = new FontFamily(new Uri("pack://application:,,,/Fonts/"), "./#CF Crack and"); 
-
-            customTheme.RegularFont = regularFont;
-            customTheme.MediumFont = mediumFont;
-            customTheme.BoldFont = boldFont;
-
-            customTheme.FontColor = Color.FromRgb(31, 59, 84);
-            customTheme.AccentColor = Color.FromRgb(192, 80, 77);
-            customTheme.DashboardBackgroundColor = Color.FromRgb(0, 0, 0);
-            customTheme.VisualizationBackgroundColor = Color.FromRgb(153, 255, 255);
+            customTheme.FontColor = Colors.DarkBlue;
+            customTheme.AccentColor = Colors.Green;
+            customTheme.DashboardBackgroundColor = Colors.LightYellow;
+            customTheme.VisualizationBackgroundColor = Colors.LightGray;
 
             customTheme.ChartColors.Clear();
             customTheme.ChartColors.Add(Color.FromRgb(192, 80, 77));
