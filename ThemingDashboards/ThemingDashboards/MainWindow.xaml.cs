@@ -33,7 +33,7 @@ namespace ThemingDashboards
 
                 if (themeItem.Name == "Clone Existing Theme")
                 {
-                    theme = CreateCustomUglyTheme();
+                    theme = CreateClonedTheme();
                 }
                 else
                 {
@@ -45,21 +45,21 @@ namespace ThemingDashboards
             }
         }
 
-        RevealTheme CreateCustomUglyTheme()
+        RevealTheme CreateClonedTheme()
         {
-            var customTheme = RevealSdkSettings.Theme.Clone();
+            var clonedTheme = RevealSdkSettings.Theme.Clone();
 
-            customTheme.FontColor = Colors.DarkBlue;
-            customTheme.AccentColor = Colors.Green;
-            customTheme.DashboardBackgroundColor = Colors.LightYellow;
-            customTheme.VisualizationBackgroundColor = Colors.LightGray;
+            clonedTheme.FontColor = Colors.DarkBlue;
+            clonedTheme.AccentColor = Colors.Green;
+            clonedTheme.DashboardBackgroundColor = Colors.LightYellow;
+            clonedTheme.VisualizationBackgroundColor = Colors.LightGray;
 
-            customTheme.ChartColors.Clear();
-            customTheme.ChartColors.Add(Color.FromRgb(192, 80, 77));
-            customTheme.ChartColors.Add(Color.FromRgb(101, 197, 235));
-            customTheme.ChartColors.Add(Color.FromRgb(232, 77, 137));
+            clonedTheme.ChartColors.Clear();
+            clonedTheme.ChartColors.Add(Color.FromRgb(192, 80, 77));
+            clonedTheme.ChartColors.Add(Color.FromRgb(101, 197, 235));
+            clonedTheme.ChartColors.Add(Color.FromRgb(232, 77, 137));
 
-            return customTheme;
+            return clonedTheme;
         }
     }
 }
