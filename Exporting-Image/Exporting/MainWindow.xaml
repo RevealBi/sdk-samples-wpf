@@ -1,0 +1,19 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rv="http://revealbi.io/" x:Class="Exporting.MainWindow"
+        Title="MainWindow" Height="720" Width="1208">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <rv:RevealView x:Name="_revealView"
+                       ShowExportToExcel="False" 
+                       ShowExportToPDF="False"
+                       ShowExportToPowerpoint="False"
+                       ShowExportImage="True"
+                       ImageExported="RevealView_ImageExported" />
+        <Button Click="ExportButton_Click" Grid.Row="1" Height="75" Width="200">Programatic Export to Image</Button>
+    </Grid>
+</Window>
