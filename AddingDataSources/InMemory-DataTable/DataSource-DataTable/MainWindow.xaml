@@ -1,11 +1,13 @@
-﻿<Window xmlns:rv="http://revealbi.io/"  x:Class="LoadingDashboards.MainWindow"
+﻿<Window x:Class="DataSource_DataTable.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Title="MainWindow">
+        xmlns:local="clr-namespace:DataSource_DataTable" 
+        xmlns:sdk="http://revealbi.io/"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="720" Width="1080">
     <Grid>
-        <rv:RevealView x:Name="_revealView" />
+        <sdk:RevealView x:Name="_revealView" />
     </Grid>
 </Window>
