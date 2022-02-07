@@ -11,13 +11,13 @@ namespace SavingDashboards
     /// </summary>
     public partial class MainWindow : Window
     {
-        string _defaultDirctory = Path.Combine(Environment.CurrentDirectory, "Dashboards");
+        string _defaultDirectory = Path.Combine(Environment.CurrentDirectory, "Dashboards");
 
         public MainWindow()
         {
             InitializeComponent();
 
-            var filePath = Path.Combine(_defaultDirctory, "Sales.rdash");
+            var filePath = Path.Combine(_defaultDirectory, "Sales.rdash");
             _revealView.Dashboard = new RVDashboard(filePath);
         }
 
@@ -30,7 +30,7 @@ namespace SavingDashboards
                     DefaultExt = ".rdash",
                     FileName = e.Name + ".rdash",
                     Filter = "Reveal Dashboard (*.rdash)|*.rdash",
-                    InitialDirectory = _defaultDirctory
+                    InitialDirectory = _defaultDirectory
                 };
 
                 if (saveDialog.ShowDialog() == true)
@@ -45,7 +45,7 @@ namespace SavingDashboards
             }
             else
             {
-                var path = Path.Combine(_defaultDirctory, $"{e.Name}.rdash");
+                var path = Path.Combine(_defaultDirectory, $"{e.Name}.rdash");
                 var data = await e.Serialize();
                 using (var output = File.Open(path, FileMode.Open))
                 {
