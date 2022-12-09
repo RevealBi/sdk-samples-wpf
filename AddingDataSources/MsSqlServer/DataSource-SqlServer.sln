@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSource-SqlServer", "DataSource-SqlServer\DataSource-SqlServer.csproj", "{98F31258-1E78-4EAA-8FAD-F01009106B97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98F31258-1E78-4EAA-8FAD-F01009106B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98F31258-1E78-4EAA-8FAD-F01009106B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98F31258-1E78-4EAA-8FAD-F01009106B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98F31258-1E78-4EAA-8FAD-F01009106B97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B038E1D9-BF95-4AB6-9410-0D9F2B8B9AEF}
+	EndGlobalSection
+EndGlobal
