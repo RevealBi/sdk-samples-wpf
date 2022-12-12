@@ -16,15 +16,13 @@ namespace LinkingDashboards
 
             var filePath = Path.Combine(Environment.CurrentDirectory, "Dashboards/Marketing.rdash");
             _revealView.Dashboard = new RVDashboard(filePath);
-        }
 
-        private void RevealView_VisualizationLinkingDashboard(object sender, VisualizationLinkingDashboardEventArgs e)
-        {
-            var path = Path.Combine(Environment.CurrentDirectory, "Dashboards/Campaigns.rdash");
-            using (var stream = File.OpenRead(path))
-            {
-                e.Callback("Campaigns", stream);
-            }
+            _revealView.LinkedDashboardProvider = (dashboardId, title) => {
+                var linkedFilePath = Path.Combine(Environment.CurrentDirectory, $"Dashboards/{dashboardId}.rdash");
+                return new RVDashboard(linkedFilePath);
+            };
         }
     }
+
+    
 }

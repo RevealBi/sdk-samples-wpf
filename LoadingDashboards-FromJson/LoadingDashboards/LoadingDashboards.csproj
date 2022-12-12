@@ -103,9 +103,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Reveal.Sdk.Wpf.Trial">
-      <Version>1.0.1922</Version>
-    </PackageReference>
+    <PackageReference Include="Reveal.Sdk.Wpf.Trial" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

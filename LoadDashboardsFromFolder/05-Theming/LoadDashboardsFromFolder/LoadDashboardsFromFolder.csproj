@@ -128,9 +128,7 @@
     <PackageReference Include="Infragistics.WPF.PropertyGrid.Trial">
       <Version>20.2.27</Version>
     </PackageReference>
-    <PackageReference Include="Reveal.Sdk.Wpf.Trial">
-      <Version>1.0.1669</Version>
-    </PackageReference>
+    <PackageReference Include="Reveal.Sdk.Wpf.Trial" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

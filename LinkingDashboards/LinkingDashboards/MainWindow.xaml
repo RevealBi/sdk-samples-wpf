@@ -4,7 +4,6 @@
         xmlns:rv="http://revealbi.io/"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <rv:RevealView x:Name="_revealView" 
-                       VisualizationLinkingDashboard="RevealView_VisualizationLinkingDashboard" />
+        <rv:RevealView x:Name="_revealView" />
     </Grid>
 </Window>
