@@ -22,7 +22,5 @@ namespace LinkingDashboards
                 return new RVDashboard(linkedFilePath);
             };
         }
-    }
-
-    
+    }    
 }
