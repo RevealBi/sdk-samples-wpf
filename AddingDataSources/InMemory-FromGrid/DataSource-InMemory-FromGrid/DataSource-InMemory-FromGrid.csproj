@@ -105,10 +105,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Infragistics.WPF.DataGrids.Trial">
-      <Version>20.2.27</Version>
-    </PackageReference>
-    <PackageReference Include="Reveal.Sdk.Wpf.Trial" />
+    <PackageReference Include="Infragistics.WPF.DataGrids.Trial" />
+    <PackageReference Include="Reveal.Sdk.Wpf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

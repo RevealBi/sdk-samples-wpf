@@ -103,7 +103,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Reveal.Sdk.Wpf.Trial" />
+    <PackageReference Include="Reveal.Sdk.Wpf" />
     <PackageReference Include="Microsoft.Identity.Client" />
     <PackageReference Include="System.Security.Cryptography.ProtectedData" />
   </ItemGroup>
