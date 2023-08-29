@@ -3,7 +3,9 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Reveal.Sdk.Wpf" Version="1.5.0" />
+    <PackageVersion Include="Reveal.Sdk.Wpf" Version="1.6.0" />
+    <PackageVersion Include="Reveal.Sdk.Data.Microsoft.SqlServer" Version="1.6.0"/>
+    <PackageVersion Include="Reveal.Sdk.Data.Microsoft.OneDrive" Version="1.6.0"/>
 
     <PackageVersion Include="Microsoft.Identity.Client" Version="4.21.1" />
     <PackageVersion Include="System.Security.Cryptography.ProtectedData" Version="4.7.0" />

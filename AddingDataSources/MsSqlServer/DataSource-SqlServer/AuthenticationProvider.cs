@@ -1,4 +1,5 @@
-﻿using Reveal.Sdk;
+﻿using Reveal.Sdk.Data;
+using Reveal.Sdk.Data.Microsoft.SqlServer;
 using System.Threading.Tasks;
 
 namespace DataSource_SqlServer

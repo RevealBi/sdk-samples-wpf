@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Reveal.Sdk.Wpf" />
+    <PackageReference Include="Reveal.Sdk.Data.Microsoft.SqlServer" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

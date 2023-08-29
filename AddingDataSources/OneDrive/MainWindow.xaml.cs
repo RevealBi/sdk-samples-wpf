@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
 using Reveal.Sdk;
+using Reveal.Sdk.Data;
+using Reveal.Sdk.Data.Microsoft.OneDrive;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
