@@ -1,5 +1,7 @@
 ﻿using Microsoft.Identity.Client;
 using Reveal.Sdk;
+using Reveal.Sdk.Data;
+using Reveal.Sdk.Data.Microsoft.OneDrive;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
