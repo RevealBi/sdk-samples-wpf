@@ -13,6 +13,7 @@ namespace DataSource_SqlServer
     {
         public MainWindow()
         {
+            RevealSdkSettings.DataSources.RegisterMicrosoftSqlServer();
             RevealSdkSettings.AuthenticationProvider = new AuthenticationProvider();
 
             InitializeComponent();
